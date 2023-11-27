@@ -30,9 +30,7 @@ Pseudohouseholds (PHHs) are representative points placed along road segments and
 
 # Description of the Algorithm
 
-To illustrate the process, we demonstrate how the algorithm assigns PHHs to a single census dissemination block (DB) in Ottawa, Ontario, with a unique identifier (DBUID) “35061699003”. This DB has an irregular shape, is several hundred meters across, and is bordered on all sides by roads (see Figure \ref{figA}).
-
-![Dissemination block (DB) 35061699003 in Ottawa, Ontario. \label{figA}](figures/README-plot_db_map-1.png)
+We demonstrate by showing how the algorithm assigns PHHs to the single census dissemination block (DB) in Ottawa, Ontario, with unique identifier "35061699003." This DB has an irregular shape, is several hundred meters across, and is bordered on all sides by roads (see Figure \ref{figA}).
 
 * **Step 0: Determine if the region is populated.** If the region is unpopulated, by default we return one point with population 0 that is flagged as uninhabited.
 * **Step 1: Find road segments intersecting or near the region.** Next we find road segments that either intersect the region plus a user-specified buffer, which in this case is set to the default of 5 meters (Figure \ref{figB}).
@@ -63,7 +61,23 @@ There are other methods of converting polygons to points for travel analysis. On
 
 # Links to Research
 
+# Figures
+
+
+![Dissemination block (DB) 35061699003 in Ottawa, Ontario. \label{figA}](figures/README-plot_db_map-1.png)
+
+![DB 35061699003 and the portions of the road network within 5m of it. \label{figB}](figures/README-plot_db_roads-1.png)
+
+![An initial sampling of points approximately every 200m on the road network within our DB’s buffer. \label{figC}](figures/README-plot_db_pointsonroads-1.png)
+
+
+![A set of candidate PHHs created by "pushing" (red points) and "pulling" (blue points) along the lines from the centroid (black point) to each on-road point. \label{figD}](figures/README-plot_db_pointsbesideroads-1.png)
+
+![A final set of PHHs for our region.\label{figE}](figures/README-plot_db_pointsinregion-1.png)
+
+
 
 # References
+
 
 
