@@ -8,7 +8,6 @@ tags:
 authors:
   - name: Christopher Belanger
     orcid: 0000-0003-2070-5721
-    equal-contrib: true
     affiliation: 1
 affiliations:
  - name: University of Ottawa, Canada
@@ -26,13 +25,16 @@ Pseudohouseholds (PHHs) are representative points placed along road segments and
 
 # Statement of Need
 
+`Pseudohouseholds` is an R package for generating representative points along road networks within regions--"pseudohouseholds," or "PHHs"--that can be used for population-weighted travel analyses.
 
 
 # Description of the Algorithm
 
 # Comparison to Other Methods
 
-By contrast, many travel analyses assume that a region's entire population is concentrated at a single point, usually the region's centroid. While this assumption can be valid for smaller regions like city blocks, it breaks in larger or rural regions where the population may be more dispersed, or regions with unusual shapes that may not contain their own centroids.
+We are unaware of any publised prior software for producing pseudohouseholds. This algorithm was inspired by prior work by the Government of Canada, which has produced "Pseudo-Household Demographic Distributions" for Canada in census years 2016 and 2021, although their methods are not published and we were unable to obtain details upon request [@secretariat_pseudo-household_2023]. 
+
+There are other methods of converting polygons to points for travel analysis. One common method assigns a region's entire population to a single point, usually the centroid. This assumption can be problematic in regions which are larger, are more rural, or that are concave and do not contain their centroids.
 
 # Links to Research
 
