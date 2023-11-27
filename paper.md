@@ -10,7 +10,7 @@ authors:
     orcid: 0000-0003-2070-5721
     affiliation: 1
 affiliations:
- - name: University of Ottawa, Canada
+ - name: Ottawa Neighbourhood Study, University of Ottawa, Canada
    index: 1
 date: 27 November 2023
 bibliography: paper.bib
@@ -55,11 +55,14 @@ The result is a set of points that are within the region, near a road, not too c
 
 # Comparison to Other Methods
 
-We are unaware of any publised prior software for producing pseudohouseholds. This algorithm was inspired by prior work by the Government of Canada, which has produced "Pseudo-Household Demographic Distributions" for Canada in census years 2016 and 2021, although their methods are not published and we were unable to obtain details upon request [@secretariat_pseudo-household_2023]. 
+We are unaware of any publised prior software for producing pseudohouseholds. This algorithm was inspired by prior work by the Government of Canada, which has produced "Pseudo-Household Demographic Distributions" for Canada in census years 2016 and 2021, although their methods are not published and we were unable to obtain details upon request [@government_of_canada_pseudo-household_2023]. 
 
 There are other methods of converting polygons to points for travel analysis. One common method assigns a region's entire population to a single point, usually the centroid. This assumption can be problematic in regions which are larger, are more rural, or that are concave and do not contain their centroids.
 
 # Links to Research
+
+The R package `pseudohouseholds` has been used in unpublished applied research with the Ottawa Neighbourhood Study investigating spatial proximity and access to public services including libraries, and further academic research is underway to validate its use for further analyses in other settings. 
+
 
 # Figures
 
