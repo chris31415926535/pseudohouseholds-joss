@@ -30,11 +30,29 @@ Pseudohouseholds (PHHs) are representative points placed along road segments and
 
 # Description of the Algorithm
 
-To illustrate the process, we demonstrate how the algorithm assigns PHHs to a single census dissemination block (DB) in Ottawa, Ontario, with a unique identifier (DBUID) “35061699003”. This DB has an irregular shape, is several hundred meters across, and is bordered on all sides by roads (see figure A).
+To illustrate the process, we demonstrate how the algorithm assigns PHHs to a single census dissemination block (DB) in Ottawa, Ontario, with a unique identifier (DBUID) “35061699003”. This DB has an irregular shape, is several hundred meters across, and is bordered on all sides by roads (see Figure \ref{figA}).
+
+![Dissemination block (DB) 35061699003 in Ottawa, Ontario. \label{figA}](figures/README-plot_db_map-1.png)
 
 * **Step 0: Determine if the region is populated.** If the region is unpopulated, by default we return one point with population 0 that is flagged as uninhabited.
+* **Step 1: Find road segments intersecting or near the region.** Next we find road segments that either intersect the region plus a user-specified buffer, which in this case is set to the default of 5 meters (Figure \ref{figB}).
 
-![testing a caption \label{testing}](figures/README-plot_db_map-1.png)
+* **Step 2: Create initial points by sampling along the road segments.** Next we sample points along these road segments, with a default sampling rate of one point every 200 meters (Figure \ref{figC}).
+
+* **Step 3: Create candidate PHHs beside the road network.** Next we generate candidate PHHs by perturbing our initial points, using a fast and simple “push/pull” approach that creates two candidate PHHs from each point by “pushing” and “pulling” it a set distance towards and away from the centroid. In our example (Figure \ref{figD}), most but not all of the blue “pull” candidates are within the DB.
+
+
+* **Step 4: Keep only candidate PHHs within the region.** Finally, we apply a spatial figure to remove all points outside of the region, giving us a set of PHHs within the region (Figure \ref{figE}).
+
+* **Step 4a: Fallback if no valid points are returned in Step 4.** A backup algorithm samples radially around our on-street points and selects the first viable candidate. If still no valid PHHs are found, the function returns a single default point and flags it for user follow-up.
+
+* **Step 5 (optional): Ensure our PHHs have a minimum population.** We can optionally prune PHHs to ensure they have a minimum population, which helps to distribute PHHs in large rural areas that would otherwise have many PHHs with populations less than 1.
+
+* **Step 6 (optional): Ensure that PHHs are separated by a minimum distance.** We can optionally remove PHHs within a minimum distance of each other, which can happen in some cases due to artefacts of the input road network.
+
+* **Step 7 (optional): Distribute regional population among PHHs.** If we are assigning population counts, each PHH receives an equal share of the region's population.
+
+The result is a set of points that are within the region, near a road, not too close together, and each have an equal share of the region’s population.
 
 
 # Comparison to Other Methods
